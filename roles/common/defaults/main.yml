@@ -22,6 +22,7 @@ sys_packages:
   - 'htop'
   - 'iotop'
   - 'libmcrypt4'
+  - 'mc'
   - 'multitail'
   - 'postfix'
   - 'python-mysqldb'
