@@ -13,6 +13,8 @@
   apt: pkg={{ item }} state=latest
   with_items:
     - mariadb-server
+    - libmariadbd-dev
+    - libmariadbclient-dev
     - python-mysqldb
 
 - name: Set the MySQL root password
