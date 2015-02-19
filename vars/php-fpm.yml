@@ -2,7 +2,7 @@
 php_fpm_config:
   - option: "request_terminate_timeout"
     section: "global"
-    value: "120s"
+    value: "240s"
 
 php_fpm_pool_defaults:
   chdir: /
@@ -34,7 +34,7 @@ php_fpm_ini:
     value: "{{ timezone }}"
   - option: "max_execution_time"
     section: "PHP"
-    value: 240
+    value: "240"
   - option: "upload_max_filesize"
     section: "PHP"
     value: "20M"
