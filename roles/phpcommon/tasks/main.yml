@@ -4,14 +4,6 @@
   include_vars: "{{ ansible_os_family }}.yml"
   tags: [ php-apcu, php-opcache, php-xdebug, php-blackfire ]
 
-- name: Install Some PPAs - software-properties-common
-  apt: name=software-properties-common state=present
-
-- name: Add package repositories
-  apt_repository: repo={{ item }}
-  with_items:
-    - "ppa:ondrej/{{ php_common_ppa }}"
-
 - name: Install PHP Packages
   sudo: yes
   apt: pkg={{ item }} state=latest
@@ -26,6 +18,9 @@
 - name: Customize PHP cli configuration file
   ini_file: dest={{ php_cli_ini_path }} section="{{ item.section }}" option="{{ item.option }}" value="{{ item.value }}" backup=yes
   with_items: php_ini
+
+- include: phpenv.yml
+  tags: php-phpenv
 
 - include: apcu.yml
   tags: php-apcu

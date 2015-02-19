@@ -1,0 +1,14 @@
+---
+
+- name: Phpenv install build dependancies
+  command: apt-get build-dep -y php5
+
+- name: Phpenv install required packages
+  apt: name={{ item }} state=present
+  with_items: php_phpenv_required_packages
+
+#http://docs.travis-ci.com/user/languages/php/
+#https://gist.github.com/banyan/4715950
+#http://mile23.com/content/using-phpenv-and-php-build-your-ubuntu
+#phpbrew install 5.3.29 +default+fpm+mysql+fileinfo+gd+intl+mcrypt+mhash+openssl+pcre+session+soap+zlib
+
