@@ -11,7 +11,10 @@ php_blackfire_enable: no
 
 php_phpenv_required_packages:
   - 'libmcrypt-dev'
+  - 'libmemcached-dev'
+  - 'libreadline-dev'
   - 'libxml2-dev'
+  - 'ccache'
 
 php_common_packages:
   - 'php-pear'

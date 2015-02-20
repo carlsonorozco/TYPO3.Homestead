@@ -7,6 +7,13 @@
   apt: name={{ item }} state=present
   with_items: php_phpenv_required_packages
 
+- name: Phpenv clone
+  git: repo=https://github.com/Tuurlijk/phpenv.git
+       dest=/usr/local/phpenv/
+
+- name: Phpenv profile setup
+  shell: echo '# phpenv setup' > /etc/profile.d/phpenv.sh; echo 'export PHPENV_ROOT=/usr/local/phpenv' >> /etc/profile.d/phpenv.sh; echo 'export PATH="/usr/local/phpenv/bin:$PATH"' >> /etc/profile.d/phpenv.sh; echo 'eval "$(phpenv init -)"' >> /etc/profile.d/phpenv.sh; executable=/bin/bash
+
 #http://docs.travis-ci.com/user/languages/php/
 #https://gist.github.com/banyan/4715950
 #http://mile23.com/content/using-phpenv-and-php-build-your-ubuntu
